@@ -1,0 +1,158 @@
+-- ------------------------------------------------------------------------------------
+-- Select usuarios
+-- ------------------------------------------------------------------------------------
+
+SELECT usuario_id AS Código, 
+	usuario_nome AS Nome,
+	usuario_cpf AS CPF,
+	usuario_email AS 'e-mail',
+	usuario_matricula AS Matrícula,
+	usuario_nivel AS 'Nível de acesso',
+	usuario_status AS 'Status'
+FROM usuarios 
+WHERE usuario_id > 0;
+
+-- ------------------------------------------------------------------------------------
+-- Select atas_de_reunioes
+-- ------------------------------------------------------------------------------------
+
+SELECT ata_id AS Código,
+	ata_nome AS Título,
+	ata_data_e_hora AS 'Data e hora', 
+    ata_pauta AS Pauta,
+    ata_relatorio AS Relatório,
+    usuario_nome AS Participantes,
+    ata_status AS 'Status'
+FROM atas_de_reunioes
+
+LEFT JOIN participantes_das_reunioes
+ON atas_de_reunioes.ata_id = participantes_das_reunioes.participante_ata_id  
+
+LEFT JOIN usuarios
+ON participantes_das_reunioes.participante_usuario_id = usuarios.usuario_id
+
+WHERE ata_id > 0;
+
+-- ------------------------------------------------------------------------------------
+-- Select usuarios(Somente ID e Nome)
+-- ------------------------------------------------------------------------------------
+
+SELECT usuario_id AS Código, 
+	usuario_nome AS Nome
+FROM usuarios 
+WHERE usuario_id > 0;
+
+-- ------------------------------------------------------------------------------------
+-- Select disciplinas
+-- ------------------------------------------------------------------------------------
+
+SELECT disciplina_id AS Código,
+	disciplina_nome AS Nome
+FROM disciplinas 
+WHERE disciplina_id > 0;
+
+-- ------------------------------------------------------------------------------------
+-- Select projetos
+-- ------------------------------------------------------------------------------------
+ 
+SELECT projeto_id AS Código,
+	projeto_nome AS 'Nome do Projeto',
+	projeto_data_de_entrega AS 'Data de entrega',
+	projeto_descricao AS Descrição,
+	disciplina_nome AS Disciplina,
+    usuario_nome AS Integrantes,
+    projeto_semestre AS Semestre,
+	projeto_ano AS Ano, 
+	anexo_nome AS Anexos,
+	projeto_status AS 'Status'
+FROM projetos
+
+LEFT JOIN disciplinas_dos_projetos
+ON projetos.projeto_id = disciplinas_dos_projetos.disciplina_do_projeto_projeto_id
+
+LEFT JOIN disciplinas
+ON disciplinas_dos_projetos.disciplina_do_projeto_disciplina_id = disciplinas.disciplina_id 
+
+LEFT JOIN integrantes_dos_projetos
+ON projetos.projeto_id = integrantes_dos_projetos.integrante_do_projeto_projeto_id
+
+LEFT JOIN usuarios
+ON integrantes_dos_projetos.integrante_do_projeto_usuario_id = usuarios.usuario_id
+
+LEFT JOIN anexos
+ON projetos.projeto_id = anexos.anexo_projeto_id
+
+WHERE projeto_id > 0;
+
+-- ------------------------------------------------------------------------------------
+-- Select gestao_de_eventos
+-- ------------------------------------------------------------------------------------
+
+SELECT evento_id AS Código,
+	evento_nome AS Nome,
+	evento_data_e_hora AS 'Data e hora',
+	evento_local AS 'local',
+	evento_curso AS Curso,
+	evento_descricao AS Descrição,
+	categoria_nome AS Categoria,
+    subcategoria_nome AS Subcategoria,
+    usuario_nome AS Participantes,
+    foto_do_evento_nome AS Fotos,
+    evento_status AS 'Status'
+FROM gestao_de_eventos
+
+LEFT JOIN categorias_dos_eventos
+ON gestao_de_eventos.evento_categoria_id = categorias_dos_eventos.categoria_id
+
+LEFT JOIN subcategorias_e_eventos
+ON gestao_de_eventos.evento_id = subcategorias_e_eventos.sub_e_evento_evento_id
+
+LEFT JOIN subcategorias_dos_eventos
+ON subcategorias_e_eventos.sub_e_evento_subcategoria_id = subcategorias_dos_eventos.subcategoria_id
+
+LEFT JOIN participantes_dos_eventos
+ON gestao_de_eventos.evento_id = participantes_dos_eventos.participante_do_evento_evento_id
+
+LEFT JOIN usuarios
+ON participantes_dos_eventos.participante_do_evento_usuario_id = usuarios.usuario_id
+
+LEFT JOIN fotos_dos_eventos
+ON gestao_de_eventos.evento_id = fotos_dos_eventos.foto_do_evento_evento_id
+
+WHERE evento_id > 0;
+
+-- ------------------------------------------------------------------------------------
+-- Select categorias_dos_eventos
+-- ------------------------------------------------------------------------------------
+
+SELECT categoria_id AS Código,
+	categoria_nome AS Nome
+FROM categorias_dos_eventos 
+WHERE categoria_id > 0;
+
+-- ------------------------------------------------------------------------------------
+-- Select subcategorias_dos_eventos
+-- ------------------------------------------------------------------------------------
+
+SELECT subcategoria_id AS Código,
+	subcategoria_nome AS Nome 
+FROM subcategorias_dos_eventos 
+WHERE subcategoria_id > 0;
+
+-- ------------------------------------------------------------------------------------
+-- Select categorias_e_subcategorias_dos_eventos
+-- ------------------------------------------------------------------------------------
+
+SELECT cat_e_sub_id AS Código,
+	categoria_nome AS Categoria,
+    subcategoria_nome AS Subcategoria
+FROM categorias_e_subcategorias_dos_eventos 
+
+LEFT JOIN categorias_dos_eventos
+ON categorias_e_subcategorias_dos_eventos.cat_e_sub_categoria_id = categorias_dos_eventos.categoria_id
+
+LEFT JOIN subcategorias_dos_eventos
+ON categorias_e_subcategorias_dos_eventos.cat_e_sub_subcategoria_id = subcategorias_dos_eventos.subcategoria_id
+
+WHERE cat_e_sub_id > 0;
+

@@ -1,0 +1,57 @@
+DELIMITER $
+CREATE OR REPLACE PROCEDURE usuario(
+    IN id INT,
+    IN nome VARCHAR(100),
+    IN cpf VARCHAR(20),
+    IN email VARCHAR(50),
+    IN matricula VARCHAR(20),
+    IN nivel VARCHAR(15),
+    IN st CHAR(1))
+	
+    BEGIN
+    	
+        DECLARE variavel VARCHAR(1000) DEFAULT "";
+        
+        IF id != 0 THEN
+        	SET	variavel = CONCAT("WHERE usuario_id = ", id);
+        ELSE
+        	SET	variavel = "WHERE usuario_id > 0";
+		END IF;
+        
+        IF nome != "" THEN
+        	SET	variavel = CONCAT(variavel, " AND usuario_nome = ", nome);
+		END IF;
+        
+        IF cpf != "" THEN
+			SET	variavel = CONCAT(variavel, " AND usuario_cpf = ", cpf);
+		END IF;
+        
+        IF email != "" THEN
+			SET	variavel = CONCAT(variavel, " AND usuario_email = ", email);
+        END IF;
+        
+        IF matricula != "" THEN
+			SET	variaveL = CONCAT(variavel, " AND usuario_matricula = ", matricula);
+        END IF;
+        
+        IF nivel != "" THEN
+			SET	variavel = CONCAT(variavel, " AND usuario_nivel = ", nivel);
+        END IF;
+        
+        IF st != "" THEN
+			SET	variavel = CONCAT(variavel, " AND usuario_status = ", st);
+        END IF;
+        
+        SELECT usuario_id AS ID, 
+			usuario_nome AS Nome,
+			usuario_cpf AS CPF,
+			usuario_email AS 'e-mail',
+			usuario_matricula AS Matrícula,
+			usuario_nivel AS 'Nível de acesso',
+			usuario_status AS 'Status'
+		FROM usuarios 
+		HAVING (SELECT variavel);
+    END $
+DELIMITER ;
+
+CALL usuario("", "", "", "", "", "", "")
