@@ -5,18 +5,13 @@
 <br>
 
 Modelagem conceitual:
-![Modelagem_conceitual_01]()
-![Modelagem_conceitual_02]()
-![Modelagem_conceitual_03]()
+![Modelagem_conceitual_01](https://github.com/RaphaelMolina/Projeto_banco_de_dados_02/blob/main/2%20-%20Mod._banco_integrado_vers%C3%A3o_3.pdf)
 
 <br>
 
 Modelagem lógica:
-![Modelagem_logica_01]()
-![Modelagem_logica_02]()
-![Modelagem_logica_03]()
-![Modelagem_logica_04]()
-![Modelagem_logica_05]()
+![Modelagem_logica_01](https://github.com/RaphaelMolina/Projeto_banco_de_dados_02/blob/main/3%20-%20Mod._l%C3%B3gico_banco_integrado_vers%C3%A3o_3.pdf)
+![Modelagem_logica_02](https://github.com/RaphaelMolina/Projeto_banco_de_dados_02/blob/main/4%20-%20Mod._l%C3%B3gico_bk_banco_integrado_vers%C3%A3o_3.pdf)
 
 <br>
 
