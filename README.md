@@ -15,10 +15,15 @@ Modelagem lógica:
 
 <br>
 
-SELECT:
-![SELECT_01]()
-![SELECT_02]()
-![SELECT_03]()
-![SELECT_04]()
-![SELECT_05]()
-![SELECT_06]()
+Procedure:
+![Procedure_01](https://github.com/RaphaelMolina/Projeto_banco_de_dados_02/blob/main/Procedure_01.JPG)
+![Procedure_02](https://github.com/RaphaelMolina/Projeto_banco_de_dados_02/blob/main/Procedure_02.JPG)
+
+<br>
+
+Select:
+![SELECT_01](https://github.com/RaphaelMolina/Projeto_banco_de_dados_02/blob/main/Select_01.JPG)
+![SELECT_02](https://github.com/RaphaelMolina/Projeto_banco_de_dados_02/blob/main/Select_02.JPG)
+![SELECT_03](https://github.com/RaphaelMolina/Projeto_banco_de_dados_02/blob/main/Select_03.JPG)
+![SELECT_04](https://github.com/RaphaelMolina/Projeto_banco_de_dados_02/blob/main/Select_04.JPG)
+![SELECT_05](https://github.com/RaphaelMolina/Projeto_banco_de_dados_02/blob/main/Select_05.JPG)
